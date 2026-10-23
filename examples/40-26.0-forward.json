@@ -1,0 +1,26 @@
+{
+  "CourseId": 40,
+  "CourseVersion": "26.0",
+  "Direction": "forward",
+  "Sections": [
+    {
+      "Id": "bridge-deck-example",
+      "Reason": "Example: ignore a raycast that hits geometry below the bridge.",
+      "StartDistanceMeters": 1200.0,
+      "EndDistanceMeters": 1280.0,
+      "IgnoreSurfaceRaycast": true,
+      "MaterialHash": 282940568,
+      "RollingResistanceCoefficient": 0.004,
+      "GripCoefficient": 0.9,
+      "ZOffsetMeters": 0.25
+    },
+    {
+      "Id": "technical-corner-example",
+      "Reason": "Example: impose a conservative cap at a known problem corner.",
+      "StartDistanceMeters": 5430.0,
+      "EndDistanceMeters": 5485.0,
+      "MaximumSafeSpeedMps": 6.5,
+      "CurvatureMultiplier": 1.15
+    }
+  ]
+}

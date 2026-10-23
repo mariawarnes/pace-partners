@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PacePartners.Core\PacePartners.Core.csproj">
+      <AdditionalProperties>PacePartnersLocalTarget=net48</AdditionalProperties>
+    </ProjectReference>
+    <Compile Include="..\..\src\PacePartners.Mod\Infrastructure\FitCourseReader.cs"
+             Link="Infrastructure\FitCourseReader.cs" />
+    <Compile Include="..\..\src\PacePartners.Mod\Runtime\FitTraceConverter.cs"
+             Link="Runtime\FitTraceConverter.cs" />
+    <Reference Include="Fit">
+      <HintPath>$(GtaVDirectory)\Scripts\Fit.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="ValidateFitReference" BeforeTargets="ResolveReferences">
+    <Error
+      Condition="'$(GtaVDirectory)' == '' or !Exists('$(GtaVDirectory)\Scripts\Fit.dll')"
+      Text="Pass -p:GtaVDirectory=&quot;path to Grand Theft Auto V&quot;." />
+  </Target>
+</Project>

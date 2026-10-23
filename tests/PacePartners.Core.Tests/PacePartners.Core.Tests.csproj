@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PacePartners.Core\PacePartners.Core.csproj" />
+    <Compile Include="..\..\src\PacePartners.Mod\Runtime\RouteProgressTracker.cs"
+             Link="Runtime\RouteProgressTracker.cs" />
+  </ItemGroup>
+</Project>

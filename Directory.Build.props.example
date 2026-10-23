@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Copy this file to Directory.Build.props and edit the path, or set GTAV_DIR. -->
+    <GtaVDirectory>D:\SteamLibrary\steamapps\common\Grand Theft Auto V</GtaVDirectory>
+  </PropertyGroup>
+</Project>

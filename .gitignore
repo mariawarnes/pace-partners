@@ -1,0 +1,23 @@
+# Build outputs
+artifacts/
+bin/
+obj/
+TestResults/
+
+# Local game/dependency configuration
+Directory.Build.props
+*.user
+*.suo
+
+# IDE files
+.vs/
+.idea/
+
+# Local investigation downloads
+.research/
+GTBikeV_*.zip
+
+# Runtime-generated files
+*.profile.json
+*.profile.json.tmp
+*.profile.json.*.tmp

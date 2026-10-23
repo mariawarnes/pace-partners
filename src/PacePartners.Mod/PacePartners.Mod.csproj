@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <RootNamespace>PacePartners.Mod</RootNamespace>
+    <AssemblyName>PacePartners</AssemblyName>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <GtaVDirectory Condition="'$(GtaVDirectory)' == ''">$(GTAV_DIR)</GtaVDirectory>
+    <OutputPath>..\..\artifacts\$(Configuration)\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PacePartners.Core\PacePartners.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="ScriptHookVDotNet3">
+      <HintPath>$(GtaVDirectory)\ScriptHookVDotNet3.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Fit">
+      <HintPath>$(GtaVDirectory)\Scripts\Fit.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(GtaVDirectory)\Scripts\Newtonsoft.Json.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <Target Name="ValidateGameReferences" BeforeTargets="ResolveReferences">
+    <Error
+      Condition="'$(GtaVDirectory)' == ''"
+      Text="Set GTAV_DIR or pass -p:GtaVDirectory=&quot;path to Grand Theft Auto V&quot;." />
+    <Error
+      Condition="'$(GtaVDirectory)' != '' and !Exists('$(GtaVDirectory)\ScriptHookVDotNet3.dll')"
+      Text="ScriptHookVDotNet3.dll was not found under $(GtaVDirectory)." />
+    <Error
+      Condition="'$(GtaVDirectory)' != '' and !Exists('$(GtaVDirectory)\Scripts\Fit.dll')"
+      Text="Fit.dll was not found under $(GtaVDirectory)\Scripts. Install GTBike V first." />
+    <Error
+      Condition="'$(GtaVDirectory)' != '' and !Exists('$(GtaVDirectory)\Scripts\Newtonsoft.Json.dll')"
+      Text="Newtonsoft.Json.dll was not found under $(GtaVDirectory)\Scripts. Install GTBike V first." />
+  </Target>
+</Project>
